@@ -5,80 +5,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Quicksand" rel="stylesheet">    <link rel="stylesheet"  href="./style.css">
 
     <title>JS Prototype Pattern</title>
 </head>
 
 <body>
-    <header class="home-header">
-        <h1>FitTrack</h1>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Associates</a></li>
-            <li><a href="#">email us</a></li>
-        </ul>
-    </header> <!-- Header-->
+   <div class="container">
+        <header class="home-header">
+            <h1>FitTrack</h1>
+            <ul class="header-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Associates</a></li>
+                <li><a href="#">email us</a></li>
+            </ul>
+        </header> <!-- Header-->
+    <!-- Main section-->
+    <section class="main-section">
+        <div class="test-page-header">
+        <h1>Fittrack Test Logging</h1>
+        </div>
 
-    <form action="">
-        <div class="form-item">
-            <label for="">FTP: </label>
-            <input type="text" placeholder="ftp test results">
+        <div class="test-section">
+            <form action="">
+                <div class="form-item">
+                    <label for="">FTP: </label>
+                    <input id="ftp" type="text" placeholder="ftp test results">
+                </div>
+                <div class="form-item">
+                    <label for="">LTHR: </label>
+                    <input id="lthr" type="text" placeholder="lthr test result">
+                </div>
+                <div class="form-item">
+                    <button type="submit">Save Results</button>
+                </div>
+            </form>
+        
+            <table class="zone-table">
+                <thead>
+                    <tr>
+                        <th>Zone</th>
+                        <th>Power</th>
+                        <th>Hear Rate</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <th>Active Recovery<htd>
+                    <td data-metric="power"></td>
+                    <td data-metric="lthr"></td>
+                </tr>
+                <tr>
+                    <th>Endurance</th>
+                    <td data-metric="power"></td>
+                    <td data-metric="lthr"></td>
+                </tr>
+                <tr>
+                    <th>Tempo</th>
+                    <td data-metric="power"></td>
+                    <td data-metric="lthr"></td>
+                </tr>
+                <tr>
+                    <th>Threshhold</th>
+                    <td data-metric="power"> </td>
+                    <td data-metric="lthr"> </td>
+                </tr>
+                <tr>
+                    <th>VO2</th>
+                    <td data-metric="power"></td>
+                    <td data-metric="lthr"> </td>
+                </tr>
+                <tr>
+                    <th>Anaerobic</th>
+                    <td data-metric="power"></td>
+                    <td data-metric="lthr"></td>
+                </tr>
+                <tr>
+                    <th>NP</th>
+                    <td data-metric="power"></td>
+                    <td data-metric="lthr"></td>
+                </tr>
+            </table>
         </div>
-        <div class="form-item">
-            <label for="">LTHR: </label>
-            <input type="text" placeholder="lthr test result">
-        </div>
-        <div class="form-item">
-            <button type="submit">Save Results</button>
-        </div>
-    </form>
-
-    <table class="zone-table">
-        <thead>
-            <tr>
-                <th>Zone</th>
-                <th>Power</th>
-                <th>Hear Rate</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>Active Recovery</td>
-            <td id="power"></td>
-            <td id="lthr"></td>
-        </tr>
-        <tr>
-            <td>Endurance</td>
-            <td id="power"></td>
-            <td id="lthr"></td>
-        </tr>
-        <tr>
-            <td>Tempo</td>
-            <td id="power"></td>
-            <td id="lthr"></td>
-        </tr>
-        <tr>
-            <td>Threshhold</td>
-            <td id="power"> </td>
-            <td id="lthr"> </td>
-        </tr>
-        <tr>
-            <td>VO2</td>
-            <td id="power"></td>
-            <td id="lthr"> </td>
-        </tr>
-        <tr>
-            <td>Anaerobic</td>
-            <td id="power"></td>
-            <td id="lthr"></td>
-        </tr>
-        <tr>
-            <td>NP</td>
-            <td id="power"></td>
-            <td id="lthr"></td>
-        </tr>
-    </table>
+        </section>
+   </div>
+   <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
     <script src="app.js"></script>
 </body>
 
