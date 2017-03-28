@@ -22,18 +22,20 @@ const model = {
     // Add Athletes to the local database
      add: function (obj) {
         var data = JSON.parse(localStorage.athletes);
+        // console.log(obj.username);
         var username = obj.username;
         function isExistingUser(user){
+            console.log(`${user.username}`, user.username === username);
             return user.username === username;
         }
-        if (data.find(isExistingUser)){ 
-            alert("Username already in use.");
-            return;
-        } else{
 
-        console.log(data.find(isExistingUser));
+        if (!data.find(isExistingUser)){ 
         data.push(obj);
-        }
+        console.log(`Hello user ${data.find(isExistingUser)} added`);
+            // return;    
+        } else {
+            alert(`Username ${obj.username} already in use.`);
+        }        
        
         localStorage.athletes = JSON.stringify(data);
     },
@@ -87,15 +89,17 @@ const view = {
 
 controller.init();
 var data = controller.getAthletes();
-console.log("Data", data);
+
 
 // Instatiate and add Athletes 
 var oscar = new model.Athlete("Oscar J Dulzaides", 56, 178, "odulzaides", "password", "o@g.com");
 var thomas = new model.Athlete("Thomas Corea", 26, 143, "tcorrea", "password", "t@g.com");
+var thomas01 = new model.Athlete("Thomas Corea", 26, 143, "tcorrea73", "password", "t@g.com");
 
 // add Atheletes to localStorage
 controller.addAthlete(oscar);
 controller.addAthlete(thomas);
+controller.addAthlete(thomas01);
 
 controller.getTestResults();
 
