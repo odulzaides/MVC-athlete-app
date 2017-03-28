@@ -22,14 +22,24 @@ const model = {
     // Add Athletes to the local database
      add: function (obj) {
         var data = JSON.parse(localStorage.athletes);
-         console.log("Model add called ", data);
+        var username = obj.username;
+        function isExistingUser(user){
+            return user.username === username;
+        }
+        if (data.find(isExistingUser)){ 
+            alert("Username already in use.");
+            return;
+        } else{
+
+        console.log(data.find(isExistingUser));
         data.push(obj);
+        }
+       
         localStorage.athletes = JSON.stringify(data);
-        console.log(data);
     },
     // get Athlete names
     getAthletes: function () {
-        var data = JSON.parse(localStorage.athletes);
+        return JSON.parse(localStorage.athletes);
     }
 }
 // Athlete object methods
@@ -37,22 +47,29 @@ model.Athlete.prototype = {
     // add test testResults
     addTestResults: function(obj,result){
         obj.testResults.push(result);
-        console.log("Added new Test Results ", obj.testResults);
     }
 }
 
 
 // Controller
 const controller = {
+    init: function(){
+        console.log("Controller init called");
+        model.init();
+        view.init();
+    },
     addAthlete: function(obj){
         model.add(obj);
     },
     addTestResults: function(obj, result){
         model.Athlete.prototype.addTestResults(obj, result);
     },
-    init: function(){
-        console.log("Controller init called");
-        model.init();
+    getTestResults: function() {
+        return model.getAthletes();
+    },
+    getAthletes: function(){
+        return model.getAthletes();
+
     }
 
 }
@@ -61,10 +78,16 @@ const controller = {
 
 // View
 const view = {
-
+    init: function(){
+        this.pCell = $('[data-metric=power]');
+        this.hCell = $('[data-metric=lthr]');
+        
+    }
 }
 
 controller.init();
+var data = controller.getAthletes();
+console.log("Data", data);
 
 // Instatiate and add Athletes 
 var oscar = new model.Athlete("Oscar J Dulzaides", 56, 178, "odulzaides", "password", "o@g.com");
@@ -74,6 +97,8 @@ var thomas = new model.Athlete("Thomas Corea", 26, 143, "tcorrea", "password", "
 controller.addAthlete(oscar);
 controller.addAthlete(thomas);
 
+controller.getTestResults();
+
 //  Add Test Results to Athletes
 // Oscar
 var date = new Date().toLocaleDateString();
@@ -81,19 +106,10 @@ var test = {};
 test[date] = [230, 152];
 controller.addTestResults(oscar, test);
 
-var date = new Date().toLocaleDateString();
-var test = {};
-test[date] = [22230, 12252];
+
+// Add test results
 controller.addTestResults(oscar, test);
 
-// Thomas
-// var date = new Date().toLocaleDateString();
-// var test = {};
-// test[date] = [22230, 12252];
-// controller.addTestResults(thomas, test);
-
-// var date = new Date().toLocaleDateString();
-// var test = {};
-// test[date] = [222, 12];
-// controller.addTestResults(thomas, test);
+var data = controller.getAthletes();
+console.log("Data", data);
 });
