@@ -5,6 +5,10 @@ body {
     display:flex;
     display: -webkit-flex;
 }
+
+.home-page-login {
+    display:hidden;
+}
 header {
     display:flex;
     flex-direction: column;
@@ -25,13 +29,12 @@ header {
     text-decoration: none;
     color:black;
 }
-.main-section {
+.test-section-container {
     display:flex;
     flex-direction: column;
-    /*padding:3em 7em;*/
     width:100%;
 }
-.test-page-header {
+.page-header {
     display:block;
     font-weight: 700;
     width: auto;
